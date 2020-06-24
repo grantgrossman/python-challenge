@@ -26,24 +26,19 @@ with open('budget_data.csv') as csv_file:
             lownumber=int(row[1])
             greatest_decrease=row
     #calculate months between the two dates 
-    monthsbetween=(dates[-1].year-dates[0].year) * 12 + (dates[-1].month-dates[0].month)
+    monthsbetween=(dates[-1].year-dates[0].year) * 12 + ((dates[-1].month-dates[0].month)+1)
     #calculate average
     average=round(total/monthsbetween,2)
+    finances=print(f"""Financial Analysis
+----------------------------
+Total Months: {monthsbetween}  
+Total: ${total} 
+Average  Change: ${average} 
+Greatest Increase in Profits: {greatest_increase[0]} ({"${:.2f}".format(float(greatest_increase[1]))})
+Greatest Decrease in Profits: {greatest_decrease[0]} ({"${:.2f}".format(float(greatest_decrease[1]))})""")
 with open("BigBank.txt", "w") as text_file:
-    print(f"""Financial Analysis
-----------------------------
-Total Months: {monthsbetween}  
-Total: ${total} 
-Average  Change: ${average} 
-Greatest Increase in Profits: {greatest_increase[0]} {"${:.2f}".format(float(greatest_increase[1]))}
-Greatest Decrease in Profits: {greatest_decrease[0]} {"${:.2f}".format(float(greatest_decrease[1]))}""",file=text_file)
-print(f"""Financial Analysis
-----------------------------
-Total Months: {monthsbetween}  
-Total: ${total} 
-Average  Change: ${average} 
-Greatest Increase in Profits: {greatest_increase[0]} {"${:.2f}".format(float(greatest_increase[1]))}
-Greatest Decrease in Profits: {greatest_decrease[0]} {"${:.2f}".format(float(greatest_decrease[1]))}""")
+    print(finances,file=text_file)
+
 
 
         

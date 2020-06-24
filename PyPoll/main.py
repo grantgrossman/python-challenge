@@ -34,26 +34,16 @@ with open('Election_data.csv') as csv_file:
     correy_vp=correy_counter/votes
     li_vp=li_counter/votes
     otooley_vp=otooley_counter/votes
+results=print(f'''Election Results
+  -------------------------
+  Total Votes: {votes}
+  -------------------------
+  Khan: {"{:.0%}".format(khan_vp)} ({khan_counter})
+  Correy: {"{:.0%}".format(correy_vp)} ({correy_counter})
+  Li: {"{:.0%}".format(li_vp)} ({li_counter})
+  O'Tooley: {"{:.0%}".format(otooley_vp)} ({otooley_counter})
+  -------------------------
+  Winner: {winner}
+  -------------------------''')
 with open("election_results.txt", "w") as text_file:
-    print(f'''Election Results
-  -------------------------
-  Total Votes: {votes}
-  -------------------------
-  Khan: {"{:.0%}".format(khan_vp)} ({khan_counter})
-  Correy: {"{:.0%}".format(correy_vp)} ({correy_counter})
-  Li: {"{:.0%}".format(li_vp)} ({li_counter})
-  O'Tooley: {"{:.0%}".format(otooley_vp)} ({otooley_counter})
-  -------------------------
-  Winner: {winner}
-  -------------------------''')
-print(f'''Election Results
-  -------------------------
-  Total Votes: {votes}
-  -------------------------
-  Khan: {"{:.0%}".format(khan_vp)} ({khan_counter})
-  Correy: {"{:.0%}".format(correy_vp)} ({correy_counter})
-  Li: {"{:.0%}".format(li_vp)} ({li_counter})
-  O'Tooley: {"{:.0%}".format(otooley_vp)} ({otooley_counter})
-  -------------------------
-  Winner: {winner}
-  -------------------------''')
+    print(results,file=text_file)
