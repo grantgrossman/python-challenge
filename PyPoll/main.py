@@ -22,13 +22,13 @@ with open('Election_data.csv') as csv_file:
             li_counter+=1
         elif row[2]=="O'Tooley":
             otooley_counter+=1
-        if khan_counter>correy_counter and li_counter and otooley_counter:
+        if khan_counter>correy_counter or li_counter or otooley_counter:
             winner="Khan"
-        elif correy_counter>khan_counter and li_counter and otooley_counter:
+        elif correy_counter>khan_counter or li_counter or otooley_counter:
             winner="Correy"
-        elif li_counter>khan_counter and correy_counter and otooley_counter:
+        elif li_counter>khan_counter or correy_counter or otooley_counter:
             winner="Li"
-        elif otooley_counter>khan_counter and correy_counter and li_counter:
+        elif otooley_counter>khan_counter or correy_counter or li_counter:
             winner="O'Tooley"    
     khan_vp=khan_counter/votes
     correy_vp=correy_counter/votes
@@ -38,10 +38,10 @@ results=print(f'''Election Results
   -------------------------
   Total Votes: {votes}
   -------------------------
-  Khan: {"{:.0%}".format(khan_vp)} ({khan_counter})
-  Correy: {"{:.0%}".format(correy_vp)} ({correy_counter})
-  Li: {"{:.0%}".format(li_vp)} ({li_counter})
-  O'Tooley: {"{:.0%}".format(otooley_vp)} ({otooley_counter})
+  {candidates[0]}: {"{:.0%}".format(khan_vp)} ({khan_counter})
+  {candidates[1]}: {"{:.0%}".format(correy_vp)} ({correy_counter})
+  {candidates[2]}: {"{:.0%}".format(li_vp)} ({li_counter})
+  {candidates[3]}: {"{:.0%}".format(otooley_vp)} ({otooley_counter})
   -------------------------
   Winner: {winner}
   -------------------------''')
